@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8"/>
+    <title>Cadastro de produtos</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="js/angular.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container-fluid navbar">
+  	<div class="row">
+  		<div class="col-md-12">
+  			<nav class="navbar navbar-default" role="navigation">
+
+  				<div class="navbar-header">
+  					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+  						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+  					</button>
+            <a class="navbar-brand" href="#">
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            </a>
+  				</div>
+
+  				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav">
+
+  					</ul>
+
+            <form class="navbar-form navbar-left" role="search">
+  						<div class="form-group">
+  							<input type="text" class="form-control">
+  						</div>
+  						<button type="submit" class="btn btn-default">
+  							Buscar
+  						</button>
+  					</form>
+
+  					<ul class="nav navbar-nav navbar-right">
+  						<li>
+  							<p style="margin-top:1em;margin-right:0.5em;">Logado como admin</p>
+  						</li>
+  					</ul>
+
+  				</div>
+
+  			</nav>
+  		</div>
+  	</div>
+
+
+    <h4><strong>Cadastro de produto</strong></h4>
+
+    <div ng-app="app" ng-controller="controller" ng-submit="salvarProduto()">
+
+      <form class="form-horizontal col-md-6" name="form">
+
+        <p ng-show="mensagem != null" ng-bind='mensagem'
+                                    class="alert alert-success"></p>
+
+        <div class="form-group nome">
+          <label>Nome</label>
+          <input name="nome" type="text" ng-model="produto.nome"
+                                class="form-control" required="required" />
+          <p class="alert alert-danger"
+              ng-show="form.nome.$invalid && form.nome.$touched">
+            Nome não pode ficar vazio
+          </p>
+        </div>
+
+        <div class="form-group descricao">
+          <label>Descrição</label>
+          <textarea id="desc" name="descricao" ng-model="produto.descricao"
+                    required="required" class="form-control">
+          </textarea>
+          <p class="alert alert-danger"
+              ng-show="form.descricao.$invalid && form.descricao.$touched">
+            Descrição não pode ficar vazia
+          </p>
+        </div>
+
+        <div class="form-group preco">
+          <label>Preço</label>
+
+          <div class="input-group">
+            <div class="input-group-addon">R$</div>
+            <input name="preco" type="number" class="form-control"
+                  ng-model="produto.preco" min="0.05" step="0.05"
+                                                      required="required"/>
+          </div>
+          <p class="alert alert-danger"
+              ng-show="form.preco.$invalid && form.preco.$touched">
+            Preço não pode ser menor que 0.05
+          </p>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-success btn-lg">
+            Salvar
+          </button>
+        </div>
+
+      </form>
+
+      <div class="col-md-6">
+        <h4><strong>Listagem de produtos</strong></h4>
+
+        <table class="table table-striped">
+
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Preço</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="produto in produtos">
+              <td>{{ produto.nome }}</td>
+              <td>{{ produto.descricao }}</td>
+              <td>{{ produto.preco }}</td>
+              <td>
+                <button ng-click='setProduto(produto)' class="btn btn-primary">
+                  Editar
+                </button>
+              </td>
+              <td>
+                <button ng-click="apagarProduto(produto.id)"
+                        type="button" class="btn btn-danger">
+                  Apagar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+  </body>
+
+</html>
