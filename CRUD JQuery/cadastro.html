@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8"/>
+    <title>Cadastro de produtos</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/ajax.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container-fluid navbar">
+  	<div class="row">
+  		<div class="col-md-12">
+  			<nav class="navbar navbar-default" role="navigation">
+
+  				<div class="navbar-header">
+  					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+  						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+  					</button>
+            <a class="navbar-brand" href="#">
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            </a>
+  				</div>
+
+  				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav">
+
+  					</ul>
+
+            <form class="navbar-form navbar-left" role="search">
+  						<div class="form-group">
+  							<input type="text" class="form-control">
+  						</div>
+  						<button type="submit" class="btn btn-default">
+  							Buscar
+  						</button>
+  					</form>
+
+  					<ul class="nav navbar-nav navbar-right">
+  						<li>
+  							<p style="margin-top:1em;margin-right:0.5em;">Logado como admin</p>
+  						</li>
+  					</ul>
+
+  				</div>
+
+  			</nav>
+  		</div>
+  	</div>
+
+
+    <h4><strong>Cadastro de produto</strong></h4>
+
+    <div>
+
+      <form class="form-horizontal col-md-6">
+
+        <div class="form-group nome">
+          <label>Nome</label>
+          <input id="nome" type="text" class="form-control" required="required" />
+        </div>
+
+        <div class="form-group descricao">
+          <label>Descrição</label>
+          <textarea id="desc" required="required" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group preco">
+          <label>Preço</label>
+
+          <div class="input-group">
+            <div class="input-group-addon">R$</div>
+            <input id="preco" type="number" min="0.05" step="0.05"
+                                class="form-control" required="required"/>
+          </div>
+        </div>
+
+
+        <div class="form-group" style="margin-top: 2em;">
+          <button type="button" id="submit" class="btn btn-success btn-lg">
+            Salvar
+          </button>
+        </div>
+
+      </form>
+
+      <div class="col-md-6">
+        <h4><strong>Listagem de produtos</strong></h4>
+
+        <table class="table table-striped">
+
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Descrição</th>
+              <th>Preço</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody id='produtos'>
+
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+  </body>
+
+</html>
